@@ -11,7 +11,14 @@ from flask import make_response
 # Flask app should start in global layout
 app = Flask(__name__)
 
-print ("Script python test.py 2 ....")
+print ("Lancement du script Livebox V1")
+
+@app.route('/webhook', methods=['POST'])
+def webhook():
+    req = request.get_json(silent=True, force=True)
+    print("Request:")
+    print(json.dumps(req, indent=4))
+    return "To conquer the human civilization on the other side."
 
 @app.route('/')
 def index():
