@@ -11,15 +11,18 @@ from flask import make_response
 # Flask app should start in global layout
 app = Flask(__name__)
 
-print ("Lancement du script Livebox V1")
+print ("log : Lancement du script Livebox V1")
 
 liveboxIp = '90.73.108.422:8085';
 url2 = 'http://' + liveboxIp + '/remoteControl/cmd?operation=01&key=116&mode=0';
     
 @app.route('/webhook', methods=['POST'])
 def webhook():
+    
+    print ("log : debut webhook")
     req = request.get_json(silent=True, force=True)
-
+    
+    print ("Lancement du script Livebox V1")
     print("Request:")
     print(json.dumps(req, indent=4))
 
@@ -32,7 +35,11 @@ def webhook():
     return r
 
 def makeWebhookResult(req):
+    print ("log : debut makeWebhookResult")
+    
     if req.get("result").get("action") == "livebox-chaines":
+        print ("log : debut req.get(result)")
+        
         liveboxIp = '90.73.108.42:8085'
         url2 = 'http://' + liveboxIp + '/remoteControl/cmd?operation=01&key='
         result = req.get("result")
