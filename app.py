@@ -3,4 +3,4 @@
 import time
 import sys
 
-print "Script python test.py 2 ...."
+print ("Script python test.py 2 ....")
