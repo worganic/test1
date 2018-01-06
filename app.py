@@ -32,13 +32,12 @@ def webhook():
     return r
 
 def makeWebhookResult(req):
-    if req.get("result").get("action") == "Livebox-chaine":
+    if req.get("result").get("action") == "livebox-chaines":
         liveboxIp = '90.73.108.42:8085'
-        url2 = 'http://' + liveboxIp + '/remoteControl/cmd?operation=01&key=116&mode=0'
         url2 = 'http://' + liveboxIp + '/remoteControl/cmd?operation=01&key='
         result = req.get("result")
         parameters = result.get("parameters")
-        zone = parameters.get("ListeDesChaines")
+        zone = parameters.get("chaines")
         zone1 = zone[0]
 
         cost = {'c1':'TF1', 'c2':'France 2', 'c3':'France 3', 'c4':'Canal plus', 'c5':'France 5', 'c6':'M 6'}
