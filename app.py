@@ -47,10 +47,9 @@ def makeWebhookResult(req):
         zone = parameters.get("chaines")
         zone1 = zone[0]
 
-        cost = {'c1':'TF1', 'c2':'France 2', 'c3':'France 3', 'c4':'Canal plus', 'c5':'France 5', 'c6':'M 6'}
+        cost = {'1':'TF1', '2':'France 2', '3':'France 3', '4':'Canal plus', '5':'France 5', '6':'M 6'}
         speech = "La chaîne " + str(cost[zone1]) + " va être lancé."
         
-        zone1 = zone1.replace("c", "")
         zone2 = int(zone1)
 
         code = {0:'512', 1:'513', 2:'514', 3:'515', 4:'516', 5:'517', 6:'518', 7:'519', 8:'520', 9:'521'}
