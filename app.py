@@ -37,12 +37,12 @@ def webhook():
 def makeWebhookResult(req):
     print ("log : debut makeWebhookResult")
     
-    if req.get("result").get("action") == "livebox-chaines":
+    if req.get("queryResult").get("action") == "livebox-chaines":
         print ("log : debut req.get(result)")
         
         liveboxIp = '90.73.108.42:8085'
         url2 = 'http://' + liveboxIp + '/remoteControl/cmd?operation=01&key='
-        result = req.get("result")
+        result = req.get("queryResult")
         parameters = result.get("parameters")
         zone = parameters.get("chaines")
         zone1 = zone[0]
