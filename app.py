@@ -121,7 +121,7 @@ def makeWebhookResult(req):
 
 @app.route('/')
 def index():
-    return "To conquer the human civilization on the other side."
+    return "Retourne true pour appli livebox appel direct."
 
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000))
