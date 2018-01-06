@@ -13,6 +13,10 @@ app = Flask(__name__)
 
 print ("Script python test.py 2 ....")
 
+@app.route('/')
+def index():
+    return "To conquer the human civilization on the other side."
+
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000))
 
