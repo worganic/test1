@@ -13,7 +13,7 @@ app = Flask(__name__)
 
 print ("log : Lancement du script Livebox V1")
 
-liveboxIp = '90.73.108.422:8085';
+liveboxIp = '90.73.15.218:8085';
 url2 = 'http://' + liveboxIp + '/remoteControl/cmd?operation=01&key=116&mode=0';
     
 @app.route('/webhook', methods=['POST'])
@@ -40,7 +40,7 @@ def makeWebhookResult(req):
     if req.get("queryResult").get("action") == "livebox-chaines":
         print ("log : debut req.get(result)")
         
-        liveboxIp = '90.73.108.42:8085'
+        liveboxIp = '90.73.15.218:8085'
         url2 = 'http://' + liveboxIp + '/remoteControl/cmd?operation=01&key='
         result = req.get("queryResult")
         parameters = result.get("parameters")
@@ -103,7 +103,7 @@ def makeWebhookResult(req):
         else:
             code = cost[zone[0]]
 
-        liveboxIp = '90.73.151.42:8085'
+        liveboxIp = '90.73.15.218:8085'
         url2 = 'http://' + liveboxIp + '/remoteControl/cmd?operation=01&key='
         
         url = url2 + code + '&mode=0'
