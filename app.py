@@ -3,6 +3,7 @@
 import urllib
 import json
 import os
+import urllib.request
 
 from flask import Flask
 from flask import request
@@ -14,7 +15,7 @@ app = Flask(__name__)
 print ("log : Lancement du script Livebox V1")
 
 liveboxIp = '90.73.15.218:8085';
-ipExterne = urllib.urlopen("http://www.whatismyip.org").readline()
+ipExterne = urllib.request.urlopen("http://www.whatismyip.org").readline()
 url2 = 'http://' + ipExterne + ':8085/remoteControl/cmd?operation=01&key=116&mode=0';
     
 @app.route('/webhook', methods=['POST'])
@@ -42,7 +43,7 @@ def makeWebhookResult(req):
         print ("log : debut req.get(result)")
         
         liveboxIp = '90.73.15.218:8085'
-        ipExterne = urllib.urlopen("http://www.whatismyip.org").readline()
+        ipExterne = urllib.request.urlopen("http://www.whatismyip.org").readline()
         url2 = 'http://' + ipExterne + ':8085/remoteControl/cmd?operation=01&key='
         result = req.get("queryResult")
         parameters = result.get("parameters")
@@ -106,7 +107,7 @@ def makeWebhookResult(req):
             code = cost[zone[0]]
 
         liveboxIp = '90.73.15.218:8085'
-        ipExterne = urllib.urlopen("http://www.whatismyip.org").readline()
+        ipExterne = urllib.request.urlopen("http://www.whatismyip.org").readline()
         url2 = 'http://' + liveboxIp + ':8085/remoteControl/cmd?operation=01&key='
         
         url = url2 + code + '&mode=0'
