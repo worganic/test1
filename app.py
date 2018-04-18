@@ -8,6 +8,8 @@ import urllib.request
 from flask import Flask
 from flask import request
 from flask import make_response
+from urllib.request import urlopen
+from bs4 import BeautifulSoup
 
 # Flask app should start in global layout
 app = Flask(__name__)
@@ -15,12 +17,7 @@ app = Flask(__name__)
 print ("log : Lancement du script Livebox V1")
 
 liveboxIp = '90.73.15.218:8085';
-
-class AppURLopener(urllib.request.FancyURLopener):
-    version = "Mozilla/5.0"
-opener = AppURLopener()
-response = opener.open('http://www.whatismyip.org')
-url2 = 'http://' + response + ':8085/remoteControl/cmd?operation=01&key=116&mode=0';
+url2 = 'http://' + liveboxIp + '/remoteControl/cmd?operation=01&key=116&mode=0';
     
 @app.route('/webhook', methods=['POST'])
 def webhook():
@@ -47,11 +44,7 @@ def makeWebhookResult(req):
         print ("log : debut req.get(result)")
         
         liveboxIp = '90.73.15.218:8085'
-        class AppURLopener(urllib.request.FancyURLopener):
-        version = "Mozilla/5.0"
-        opener = AppURLopener()
-        response = opener.open('http://www.whatismyip.org')
-        url2 = 'http://' + response + ':8085/remoteControl/cmd?operation=01&key='
+        url2 = 'http://' + liveboxIp + '/remoteControl/cmd?operation=01&key='
         result = req.get("queryResult")
         parameters = result.get("parameters")
         zone = parameters.get("chaines")
@@ -114,11 +107,7 @@ def makeWebhookResult(req):
             code = cost[zone[0]]
 
         liveboxIp = '90.73.15.218:8085'
-        class AppURLopener(urllib.request.FancyURLopener):
-        version = "Mozilla/5.0"
-        opener = AppURLopener()
-        response = opener.open('http://www.whatismyip.org')
-        url2 = 'http://' + response + ':8085/remoteControl/cmd?operation=01&key='
+        url2 = 'http://' + liveboxIp + '/remoteControl/cmd?operation=01&key='
         
         url = url2 + code + '&mode=0'
         page = urllib.request.urlopen(url) 
